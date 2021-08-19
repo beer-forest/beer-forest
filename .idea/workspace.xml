@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17cb0fca-ec20-4eed-9222-a212ca2a2532" name="Default Changelist" comment="" />
+    <list default="true" id="17cb0fca-ec20-4eed-9222-a212ca2a2532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/routes/route.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/kernel_snapshot.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/4318176a94909e7555a8c76e550f628f/kernel_snapshot.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/generated_plugin_registrant.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,29 +156,39 @@
       <screen x="-480" y="-1055" width="1920" height="1055" />
     </state>
     <state x="670" y="-900" key="AndroidProcessChooserDialog/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1628682153160" />
-    <state width="1332" height="285" key="GridCell.Tab.0.bottom" timestamp="1629290396358">
+    <state width="1132" height="285" key="GridCell.Tab.0.bottom" timestamp="1629374781476">
       <screen x="-480" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1332" height="285" key="GridCell.Tab.0.bottom/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629290396358" />
+    <state width="1132" height="285" key="GridCell.Tab.0.bottom/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629374781476" />
     <state width="1189" height="285" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1628771689214" />
-    <state width="1332" height="285" key="GridCell.Tab.0.center" timestamp="1629290396356">
+    <state width="1132" height="285" key="GridCell.Tab.0.center" timestamp="1629374781475">
       <screen x="-480" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1332" height="285" key="GridCell.Tab.0.center/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629290396356" />
+    <state width="1132" height="285" key="GridCell.Tab.0.center/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629374781475" />
     <state width="1189" height="285" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1628771689213" />
-    <state width="1332" height="285" key="GridCell.Tab.0.left" timestamp="1629290396355">
+    <state width="1132" height="285" key="GridCell.Tab.0.left" timestamp="1629374781474">
       <screen x="-480" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1332" height="285" key="GridCell.Tab.0.left/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629290396355" />
+    <state width="1132" height="285" key="GridCell.Tab.0.left/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629374781474" />
     <state width="1189" height="285" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1628771689213" />
-    <state width="1332" height="285" key="GridCell.Tab.0.right" timestamp="1629290396356">
+    <state width="1132" height="285" key="GridCell.Tab.0.right" timestamp="1629374781476">
       <screen x="-480" y="-1055" width="1920" height="1055" />
     </state>
-    <state width="1332" height="285" key="GridCell.Tab.0.right/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629290396356" />
+    <state width="1132" height="285" key="GridCell.Tab.0.right/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629374781476" />
     <state width="1189" height="285" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1628771689214" />
     <state x="403" y="-949" key="SettingsEditor" timestamp="1629290465206">
       <screen x="-480" y="-1055" width="1920" height="1055" />
     </state>
     <state x="403" y="-949" key="SettingsEditor/0.25.1440.875/-480.-1055.1920.1055@-480.-1055.1920.1055" timestamp="1629290465206" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/service/authentication_service.dart</url>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
