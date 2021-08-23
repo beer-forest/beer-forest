@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app_firestore_example/api/firebase_api.dart';
-import 'package:todo_app_firestore_example/model/todo.dart';
-import 'package:todo_app_firestore_example/provider/todos.dart';
-import 'package:todo_app_firestore_example/widget/add_todo_dialog_widget.dart';
-import 'package:todo_app_firestore_example/widget/completed_list_widget.dart';
-import 'package:todo_app_firestore_example/widget/todo_list_widget.dart';
+import 'package:firebase_authentication_tutorial/api/firebase_api.dart';
+import 'package:firebase_authentication_tutorial/model/todo.dart';
+import 'package:firebase_authentication_tutorial/provider/todos.dart';
+import 'package:firebase_authentication_tutorial/widget/add_todo_dialog_widget.dart';
+import 'package:firebase_authentication_tutorial/widget/completed_list_widget.dart';
+import 'package:firebase_authentication_tutorial/widget/todo_list_widget.dart';
 
-import '../main.dart';
+import '../main_1.dart';
 
 class HomePage extends StatefulWidget {
   @override

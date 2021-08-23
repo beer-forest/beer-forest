@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app_firestore_example/model/todo.dart';
-import 'package:todo_app_firestore_example/provider/todos.dart';
-import 'package:todo_app_firestore_example/widget/todo_form_widget.dart';
+import 'package:firebase_authentication_tutorial/model/todo.dart';
+import 'package:firebase_authentication_tutorial/provider/todos.dart';
+import 'package:firebase_authentication_tutorial/widget/todo_form_widget.dart';
 
 class AddTodoDialogWidget extends StatefulWidget {
   @override

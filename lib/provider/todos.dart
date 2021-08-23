@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:todo_app_firestore_example/api/firebase_api.dart';
-import 'package:todo_app_firestore_example/model/todo.dart';
+import 'package:firebase_authentication_tutorial/api/firebase_api.dart';
+import 'package:firebase_authentication_tutorial/model/todo.dart';
 
 class TodosProvider extends ChangeNotifier {
   List<Todo> _todos = [];

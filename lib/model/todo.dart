@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:todo_app_firestore_example/utils.dart';
+import 'package:firebase_authentication_tutorial/utils.dart';
 
 class TodoField {
   static const createdTime = 'createdTime';

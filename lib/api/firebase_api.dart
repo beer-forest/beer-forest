@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:todo_app_firestore_example/model/todo.dart';
-import 'package:todo_app_firestore_example/utils.dart';
+import 'package:firebase_authentication_tutorial/model/todo.dart';
+import 'package:firebase_authentication_tutorial/utils.dart';
 
 class FirebaseApi {
   static Future<String> createTodo(Todo todo) async {

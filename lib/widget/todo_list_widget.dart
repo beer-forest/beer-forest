@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app_firestore_example/provider/todos.dart';
-import 'package:todo_app_firestore_example/widget/todo_widget.dart';
+import 'package:firebase_authentication_tutorial/provider/todos.dart';
+import 'package:firebase_authentication_tutorial/widget/todo_widget.dart';
 
 class TodoListWidget extends StatelessWidget {
   @override

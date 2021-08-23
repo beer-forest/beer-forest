@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app_firestore_example/model/todo.dart';
-import 'package:todo_app_firestore_example/page/edit_todo_page.dart';
-import 'package:todo_app_firestore_example/provider/todos.dart';
-import 'package:todo_app_firestore_example/utils.dart';
+import 'package:firebase_authentication_tutorial/model/todo.dart';
+import 'package:firebase_authentication_tutorial/page/edit_todo_page.dart';
+import 'package:firebase_authentication_tutorial/provider/todos.dart';
+import 'package:firebase_authentication_tutorial/utils.dart';
 
 class TodoWidget extends StatelessWidget {
   final Todo todo;
