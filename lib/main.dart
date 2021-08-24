@@ -2,9 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_authentication_tutorial/authentication_service.dart';
 import 'package:firebase_authentication_tutorial/home_page.dart';
 import 'package:firebase_authentication_tutorial/sign_in_page.dart';
+import 'package:firebase_authentication_tutorial/provider/todos.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +16,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = 'Start With Firebase';
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -22,8 +26,12 @@ class MyApp extends StatelessWidget {
         ),
         StreamProvider(
           create: (context) => context.read<AuthenticationService>().authStateChanges,
-        )
+        ),
+        ChangeNotifierProvider<TodosProvider >(
+          create: (_) => TodosProvider(),
+        ),
       ],
+
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
