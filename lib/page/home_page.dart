@@ -1,3 +1,4 @@
+import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/api/firebase_api.dart';
@@ -27,6 +28,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(MyApp.title),
+        leading: IconButton (
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            context.read<AuthenticationService>().signOut();
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
