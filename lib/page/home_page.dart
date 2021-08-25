@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(MyApp.title),
         leading: IconButton (
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.logout),
           onPressed: () {
             context.read<AuthenticationService>().signOut();
           },
