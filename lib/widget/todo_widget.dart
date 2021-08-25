@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/model/todo.dart';
 import 'package:firebase_authentication_tutorial/page/edit_todo_page.dart';
 import 'package:firebase_authentication_tutorial/provider/todos.dart';
-import 'package:firebase_authentication_tutorial/utils.dart';
+import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class TodoWidget extends StatelessWidget {
   final Todo todo;

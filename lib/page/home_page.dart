@@ -7,7 +7,7 @@ import 'package:firebase_authentication_tutorial/widget/add_todo_dialog_widget.d
 import 'package:firebase_authentication_tutorial/widget/completed_list_widget.dart';
 import 'package:firebase_authentication_tutorial/widget/todo_list_widget.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class HomePage extends StatefulWidget {
   @override
