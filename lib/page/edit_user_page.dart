@@ -57,6 +57,8 @@ class _EditUserPageState extends State<EditUserPage> {
               onChangedName: (name) => setState(() => this.name = name),
               onChangedEmail: (email) =>
                   setState(() => this.email = email),
+              onChangedPreferenceIds: (preference_ids) =>
+                  setState(() => this.preference_ids = preference_ids.toList()),
               onSavedUser: saveUser,
             ),
           ),
@@ -71,7 +73,7 @@ class _EditUserPageState extends State<EditUserPage> {
     } else {
       final provider = Provider.of<UsersProvider>(context, listen: false);
 
-      provider.updateUser(widget.user, name, description);
+      provider.updateUser(widget.user, name, email, preference_ids);
 
       Navigator.of(context).pop();
     }

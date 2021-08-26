@@ -4,15 +4,16 @@ import 'package:firebase_authentication_tutorial/model/user.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/user_form_widget.dart';
 
-class AddTodoDialogWidget extends StatefulWidget {
+class AddUserDialogWidget extends StatefulWidget {
   @override
-  _AddTodoDialogWidgetState createState() => _AddTodoDialogWidgetState();
+  _AddUserDialogWidgetState createState() => _AddUserDialogWidgetState();
 }
 
-class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
+class _AddUserDialogWidgetState extends State<AddUserDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String name = '';
   String email = '';
+  List<String> preference_ids;
 
   @override
   Widget build(BuildContext context) => AlertDialog(
@@ -23,7 +24,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Add Todo',
+                'Add User',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
@@ -34,6 +35,8 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
                 onChangedName: (name) => setState(() => this.name = name),
                 onChangedEmail: (email) =>
                     setState(() => this.email = email),
+                onChangedPreferenceIds: (preference_ids) =>
+                    setState(() => this.preference_ids = preference_ids.toList()),
                 onSavedUser: addUser,
               ),
             ],
@@ -51,6 +54,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
         id: DateTime.now().toString(),
         name: name,
         email: email,
+        preference_ids: preference_ids,
         createdTime: DateTime.now(),
       );
 

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/user_widget.dart';
 
-class TodoListWidget extends StatelessWidget {
+class UserListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<UsersProvider>(context);

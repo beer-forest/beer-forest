@@ -8,6 +8,7 @@ class UserFormWidget extends StatelessWidget {
   final ValueChanged<String> onChangedEmail;
   final ValueChanged<List<String>> onChangedPreferenceIds;
   final VoidCallback onSavedUser;
+  final TextEditingController myController;
 
   const UserFormWidget({
     Key key,
@@ -18,6 +19,7 @@ class UserFormWidget extends StatelessWidget {
     @required this.onChangedEmail,
     @required this.onChangedPreferenceIds,
     @required this.onSavedUser,
+    this.myController
   }) : super(key: key);
 
   @override
@@ -26,11 +28,11 @@ class UserFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             buildName(),
-            SizedBox(height: 8),
+            SizedBox(height: 4),
             buildEmail(),
-            SizedBox(height: 16),
+            SizedBox(height: 4),
             buildPreferenceIds(),
-            SizedBox(height: 16),
+            SizedBox(height: 4),
             buildButton(),
           ],
         ),
@@ -53,7 +55,7 @@ class UserFormWidget extends StatelessWidget {
       );
 
   Widget buildEmail() => TextFormField(
-        maxLines: 3,
+        maxLines: 1,
         initialValue: email,
         onChanged: onChangedEmail,
         decoration: InputDecoration(
@@ -62,10 +64,10 @@ class UserFormWidget extends StatelessWidget {
         ),
       );
 
-  Widget buildPreferenceIds() => TextFormField( # should output list of string
-    maxLines: 3,
-    initialValue: preference_ids,
-    onChanged: onChangedPreferenceIds,
+  Widget buildPreferenceIds() => TextFormField(
+    maxLines: 1,
+    initialValue: "",
+    //onChanged: onChangedPreferenceIds,
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
       labelText: 'Preferences',
