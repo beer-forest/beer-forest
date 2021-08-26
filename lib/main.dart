@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
 import 'package:firebase_authentication_tutorial/page/home_page.dart';
 import 'package:firebase_authentication_tutorial/page/sign_in_page.dart';
+import 'package:firebase_authentication_tutorial/page/sign_up_page.dart';
 import 'package:firebase_authentication_tutorial/provider/todos.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -48,9 +49,12 @@ class AuthenticationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
+    print("still in build");
 
     if (firebaseUser != null) {
+      print("wtf");
       return HomePage();
+
     }
     return SignInPage();
   }
