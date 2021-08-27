@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_authentication_tutorial/utils.dart';
+import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class UserField {
   static const createdTime = 'createdTime';

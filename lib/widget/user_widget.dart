@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
 import 'package:firebase_authentication_tutorial/page/edit_user_page.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
-import 'package:firebase_authentication_tutorial/utils.dart';
+import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class UserWidget extends StatelessWidget {
   final User user;

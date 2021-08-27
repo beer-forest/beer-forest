@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
-import 'package:firebase_authentication_tutorial/utils.dart';
+import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class FirebaseApi {
   static Future<String> createUser(User user) async {
