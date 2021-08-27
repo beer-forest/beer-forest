@@ -18,7 +18,9 @@ class _EditUserPageState extends State<EditUserPage> {
 
   String name;
   String email;
-  List<String> preference_ids;
+  bool pref_english;
+  bool pref_korean_literature;
+  bool pref_mathematics;
 
   @override
   void initState() {
@@ -26,7 +28,9 @@ class _EditUserPageState extends State<EditUserPage> {
 
     name = widget.user.name;
     email = widget.user.email;
-    preference_ids = widget.user.preference_ids;
+    pref_english = widget.user.pref_english;
+    pref_korean_literature = widget.user.pref_korean_literature;
+    pref_mathematics = widget.user.pref_mathematics;
   }
 
   @override
@@ -53,12 +57,18 @@ class _EditUserPageState extends State<EditUserPage> {
             child: UserFormWidget(
               name: name,
               email: email,
-              preference_ids: preference_ids,
+              pref_english: pref_english,
+              pref_korean_literature: pref_korean_literature,
+              pref_mathematics: pref_mathematics,
               onChangedName: (name) => setState(() => this.name = name),
               onChangedEmail: (email) =>
                   setState(() => this.email = email),
-              onChangedPreferenceIds: (preference_ids) =>
-                  setState(() => this.preference_ids = preference_ids.toList()),
+              onChangedPrefEnglish: (pref_english) =>
+                  setState(() => this.pref_english = pref_english),
+              onChangedPrefKoreanLiterature: (pref_korean_literature) =>
+                  setState(() => this.pref_korean_literature = pref_korean_literature),
+              onChangedPrefMathematics: (pref_mathematics) =>
+                  setState(() => this.pref_mathematics = pref_mathematics),
               onSavedUser: saveUser,
             ),
           ),
@@ -73,7 +83,8 @@ class _EditUserPageState extends State<EditUserPage> {
     } else {
       final provider = Provider.of<UsersProvider>(context, listen: false);
 
-      provider.updateUser(widget.user, name, email, preference_ids);
+      provider.updateUser(widget.user, name, email,
+          pref_english, pref_korean_literature, pref_mathematics);
 
       Navigator.of(context).pop();
     }

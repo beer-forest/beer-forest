@@ -10,7 +10,9 @@ class User {
   String name;
   String id;
   String email;
-  List<String> preference_ids;
+  bool pref_english;
+  bool pref_korean_literature;
+  bool pref_mathematics;
   bool isDone;
 
   User({
@@ -18,7 +20,9 @@ class User {
     @required this.name,
     @required this.email,
     this.id,
-    @required this.preference_ids,
+    this.pref_english = false,
+    this.pref_korean_literature = false,
+    this.pref_mathematics = false,
     this.isDone = false
   });
 
@@ -27,7 +31,9 @@ class User {
         name: json['name'],
         email: json['email'],
         id: json['id'],
-        preference_ids: (json['preference_ids'] as List).cast<String>(),
+        pref_english: json['pref_english'],
+        pref_korean_literature: json['pref_korean_literature'],
+        pref_mathematics: json['pref_mathematics'],
         isDone: json['isDone']
       );
 
@@ -36,7 +42,9 @@ class User {
         'name': name,
         'email': email,
         'id': id,
-        'preference_ids': preference_ids,
+        'pref_english': pref_english,
+        'pref_korean_literature': pref_korean_literature,
+        'pref_mathematics': pref_mathematics,
         'isDone': isDone,
       };
 }

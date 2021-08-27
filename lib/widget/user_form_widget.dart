@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class UserFormWidget extends StatelessWidget {
   final String name;
   final String email;
-  final List<String> preference_ids;
+  final bool pref_english;
+  final bool pref_korean_literature;
+  final bool pref_mathematics;
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedEmail;
-  final ValueChanged<List<String>> onChangedPreferenceIds;
+  final ValueChanged<bool> onChangedPrefEnglish;
+  final ValueChanged<bool> onChangedPrefKoreanLiterature;
+  final ValueChanged<bool> onChangedPrefMathematics;
+
   final VoidCallback onSavedUser;
   final TextEditingController myController;
 
@@ -14,10 +19,15 @@ class UserFormWidget extends StatelessWidget {
     Key key,
     this.name = '',
     this.email = '',
-    this.preference_ids,
+    this.pref_english = false,
+    this.pref_korean_literature = false,
+    this.pref_mathematics = false,
+
     @required this.onChangedName,
     @required this.onChangedEmail,
-    @required this.onChangedPreferenceIds,
+    @required this.onChangedPrefEnglish,
+    @required this.onChangedPrefKoreanLiterature,
+    @required this.onChangedPrefMathematics,
     @required this.onSavedUser,
     this.myController
   }) : super(key: key);
@@ -28,11 +38,10 @@ class UserFormWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             buildName(),
-            SizedBox(height: 4),
             buildEmail(),
-            SizedBox(height: 4),
-            buildPreferenceIds(),
-            SizedBox(height: 4),
+            buildPrefEnglish(),
+            buildPrefKoreanLiterature(),
+            buildPrefMathematics(),
             buildButton(),
           ],
         ),
@@ -64,16 +73,22 @@ class UserFormWidget extends StatelessWidget {
         ),
       );
 
-  Widget buildPreferenceIds() => TextFormField(
-    maxLines: 1,
-    initialValue: "",
-    //onChanged: onChangedPreferenceIds,
-    decoration: InputDecoration(
-      border: UnderlineInputBorder(),
-      labelText: 'Preferences',
-    ),
+  Widget buildPrefEnglish() => CheckboxListTile(
+    title: Text("english"),
+    value: pref_english,
+    onChanged: onChangedPrefEnglish
+  );
+  Widget buildPrefKoreanLiterature() => CheckboxListTile(
+      title: Text("korean literature"),
+      value: pref_korean_literature,
+      onChanged: onChangedPrefKoreanLiterature
   );
 
+  Widget buildPrefMathematics() => CheckboxListTile(
+      title: Text("mathematics"),
+      value: pref_mathematics,
+      onChanged: onChangedPrefMathematics
+  );
 
   Widget buildButton() => SizedBox(
         width: double.infinity,

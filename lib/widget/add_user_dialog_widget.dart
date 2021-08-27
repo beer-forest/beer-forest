@@ -13,7 +13,10 @@ class _AddUserDialogWidgetState extends State<AddUserDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String name = '';
   String email = '';
-  List<String> preference_ids;
+  bool pref_english = false;
+  bool pref_korean_literature = false;
+  bool pref_mathematics = false;
+
 
   @override
   Widget build(BuildContext context) => AlertDialog(
@@ -35,8 +38,12 @@ class _AddUserDialogWidgetState extends State<AddUserDialogWidget> {
                 onChangedName: (name) => setState(() => this.name = name),
                 onChangedEmail: (email) =>
                     setState(() => this.email = email),
-                onChangedPreferenceIds: (preference_ids) =>
-                    setState(() => this.preference_ids = preference_ids.toList()),
+                onChangedPrefEnglish: (bool pref_english) =>
+                    setState(() => this.pref_english = pref_english),
+                onChangedPrefKoreanLiterature: (bool pref_korean_literature) =>
+                    setState(() => this.pref_korean_literature = pref_korean_literature),
+                onChangedPrefMathematics: (bool pref_mathematics) =>
+                    setState(() => this.pref_mathematics = pref_mathematics),
                 onSavedUser: addUser,
               ),
             ],
@@ -54,7 +61,9 @@ class _AddUserDialogWidgetState extends State<AddUserDialogWidget> {
         id: DateTime.now().toString(),
         name: name,
         email: email,
-        preference_ids: preference_ids,
+        pref_english: pref_english,
+        pref_korean_literature: pref_korean_literature,
+        pref_mathematics: pref_mathematics,
         createdTime: DateTime.now(),
       );
 
