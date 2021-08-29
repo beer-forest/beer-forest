@@ -19,7 +19,8 @@ class _AddUserDialogWidgetState extends State<AddUserDialogWidget> {
 
 
   @override
-  Widget build(BuildContext context) => AlertDialog(
+  Widget build(BuildContext context) => SingleChildScrollView(
+      child:AlertDialog(
         content: Form(
           key: _formKey,
           child: Column(
@@ -48,6 +49,7 @@ class _AddUserDialogWidgetState extends State<AddUserDialogWidget> {
               ),
             ],
           ),
+        ),
         ),
       );
 
