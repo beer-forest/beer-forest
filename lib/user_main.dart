@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
-import 'package:firebase_authentication_tutorial/user_home_page.dart';
+import 'package:firebase_authentication_tutorial/page/user_home_page.dart';
 import 'package:firebase_authentication_tutorial/page/sign_in_page.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 

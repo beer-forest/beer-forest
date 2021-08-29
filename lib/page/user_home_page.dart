@@ -1,14 +1,13 @@
-import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_authentication_tutorial/api/firebase_api.dart';
-import 'package:firebase_authentication_tutorial/model/todo.dart';
-import 'package:firebase_authentication_tutorial/provider/todos.dart';
-import 'package:firebase_authentication_tutorial/widget/add_todo_dialog_widget.dart';
-import 'package:firebase_authentication_tutorial/widget/completed_list_widget.dart';
-import 'package:firebase_authentication_tutorial/widget/todo_list_widget.dart';
+import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
+import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_authentication_tutorial/provider/users.dart';
+import 'package:firebase_authentication_tutorial/widget/add_user_dialog_widget.dart';
+import 'package:firebase_authentication_tutorial/widget/completed_user_list_widget.dart';
+import 'package:firebase_authentication_tutorial/widget/user_list_widget.dart';
 
-import '../main.dart';
+import '../user_main.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,19 +20,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      TodoListWidget(),
+      UserListWidget(),
       CompletedListWidget(),
     ];
 
     return Scaffold(
       appBar: AppBar(
         title: Text(MyApp.title),
-        leading: IconButton (
-          icon: Icon(Icons.logout),
-          onPressed: () {
-            context.read<AuthenticationService>().signOut();
-          },
-        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
@@ -46,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.fact_check_outlined),
-            label: 'Todos',
+            label: 'Users',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.done, size: 28),
@@ -54,8 +47,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: StreamBuilder<List<Todo>>(
-        stream: FirebaseApi.readTodos(),
+      body: StreamBuilder<List<User>>(
+        stream: FirebaseApi.readUsers(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
@@ -64,10 +57,10 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasError) {
                 return buildText('Something Went Wrong Try later');
               } else {
-                final todos = snapshot.data;
+                final users = snapshot.data;
 
-                final provider = Provider.of<TodosProvider>(context);
-                provider.setTodos(todos);
+                final provider = Provider.of<UsersProvider>(context);
+                provider.setUsers(users);
 
                 return tabs[selectedIndex];
               }
@@ -81,7 +74,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
         onPressed: () => showDialog(
           context: context,
-          builder: (context) => AddTodoDialogWidget(),
+          builder: (context) => AddUserDialogWidget(),
           barrierDismissible: false,
         ),
         child: Icon(Icons.add),
