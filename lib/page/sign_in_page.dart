@@ -1,7 +1,8 @@
-import 'package:firebase_authentication_tutorial/page/sign_up_page.dart';
+import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 class SignInPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -80,6 +81,12 @@ class SignInPage extends StatelessWidget {
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
                             );
+                            print("inside sign_in_page");
+                            // TODO(chococigar) there is a known delay in sign in. for some reason you have to click twice.
+                            if (Auth.instance.isSignedIn) {
+                              print("is signed in.");
+                              Navigator.of(context).pushNamed(route.homePage);
+                            }
                           },
                           child: Center(
                             child: Text(
@@ -114,20 +121,16 @@ class SignInPage extends StatelessWidget {
                                 )
                             )
                         ),
-                        onPressed: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (_) => SignUpPage(),
-                          ),
-                        ),
+                        onPressed: () => Navigator.of(context).pushNamed(route.signupPage),
                         child:
-                        Center(
-                          child: Text('Sign up',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')
+                          Center(
+                            child: Text('Sign up',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Montserrat')
+                            ),
                           ),
-                        ),
                       ),
                     ),
                   ),
