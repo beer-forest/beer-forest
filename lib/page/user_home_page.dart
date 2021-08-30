@@ -7,7 +7,7 @@ import 'package:firebase_authentication_tutorial/widget/add_user_dialog_widget.d
 import 'package:firebase_authentication_tutorial/widget/completed_user_list_widget.dart';
 import 'package:firebase_authentication_tutorial/widget/user_list_widget.dart';
 
-import '../user_main.dart';
+import '../main.dart';
 
 class HomePage extends StatefulWidget {
   @override
