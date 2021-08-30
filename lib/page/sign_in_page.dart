@@ -10,7 +10,7 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: SingleChildScrollView(child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
             Container(
@@ -19,26 +19,14 @@ class SignInPage extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
                     child: Text(
-                      'learnmate signin lol',
-                      style:
-                      TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                      'learnmate',
+                      style: TextStyle(fontSize: 52.0, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(60.0, 25.0, 0.0, 0.0),
-                    child: Text(
-                      '.',
-                      style: TextStyle(
-                          fontSize: 80.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green),
-                    ),
-                  )
                 ],
               )
             ),
             Container(
-              // padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
               padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
               child: Column(
                 children: <Widget>[
@@ -50,8 +38,7 @@ class SignInPage extends StatelessWidget {
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
-                        // hintText: 'EMAIL',
-                        // hintStyle: ,
+                            hintText: 'asdf@gmail.com',
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.green)
                         )
@@ -71,7 +58,6 @@ class SignInPage extends StatelessWidget {
                     obscureText: true,
                   ),
                   SizedBox(height: 10.0),
-                  // SizedBox(height: 50.0),
                   Container(
                       height: 40.0,
                       child: Material(
@@ -80,8 +66,15 @@ class SignInPage extends StatelessWidget {
                         color: Colors.green,
                         elevation: 7.0,
                         child: ElevatedButton(
-                          // onTap: () {},
-                          // onPressed: () {
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side: BorderSide(color: Colors.green, width: 2.0)
+                                  )
+                              )
+                          ),
                           onPressed: (){
                             context.read<AuthenticationService>().signIn(
                               email: emailController.text.trim(),
@@ -92,73 +85,57 @@ class SignInPage extends StatelessWidget {
                             child: Text(
                               'Sign in',
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Montserrat'),
                             ),
                           ),
                         ),
                       )),
-                  // SizedBox(height: 20.0),
+                  SizedBox(height: 8.0),
                   Container(
                     height: 40.0,
                     color: Colors.transparent,
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: Colors.black,
+                              color: Colors.green,
                               style: BorderStyle.solid,
-                              width: 1.0),
+                              width: 0.0),
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0)),
                       child: ElevatedButton(
-                        /*
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.green, width: 2.0)
+                                )
+                            )
+                        ),
                         onPressed: () => Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (_) => SignUpPage(),
                           ),
                         ),
-                        */
-
                         child:
-
                         Center(
                           child: Text('Sign up',
                               style: TextStyle(
+                                  color: Colors.black,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
+                                  fontFamily: 'Montserrat')
+                          ),
                         ),
-
-
                       ),
                     ),
                   ),
                 ]
               ),
             ),
- /*
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(
-              labelText: "Email",
-            ),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              labelText: "Password",
-            ),
-          ),
-          RaisedButton(
-            onPressed: () {
-              context.read<AuthenticationService>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
-            },
-            child: Text("Sign in"),
-          ) */
          ],
+      ),
       ),
     );
   }
