@@ -1,7 +1,6 @@
+import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
-import 'package:firebase_authentication_tutorial/page/user_home_page.dart';
-import 'package:firebase_authentication_tutorial/page/sign_in_page.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -38,20 +37,30 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: AuthenticationWrapper(),
+        // home: AuthenticationWrapper(),
+        onGenerateRoute: route.controller,
+        initialRoute: route.SignIn,
       ),
     );
   }
 }
 
+
+/*
 class AuthenticationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
-
+    // print("main.dart auth wrapper");
+    Navigator.of(context).popUntil(ModalRoute.withName("/"));
+    // Navigator.of(context).pushReplacement(ModalRoute.withName("/"));
+    /*
     if (firebaseUser != null) {
+      print("USER EXISTS!!!!!!");
       return HomePage();
     }
     return SignInPage();
+    */
   }
 }
+*/

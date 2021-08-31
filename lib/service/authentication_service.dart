@@ -41,3 +41,17 @@ class AuthenticationService {
     }
   }
 }
+
+class Auth {
+  static final instance = Auth._();
+  Auth._();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool get isSignedIn => _auth.currentUser != null;
+
+  Stream<User> authStateChange() => _auth.authStateChanges();
+
+  Future<void> signIn({String email, String password}) => _auth.signInWithEmailAndPassword(email: email, password: password);
+
+  Future<void> signOut() => _auth.signOut();
+}

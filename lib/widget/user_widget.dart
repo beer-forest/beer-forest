@@ -1,8 +1,9 @@
+import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
-import 'package:firebase_authentication_tutorial/page/edit_user_page.dart';
+import 'package:firebase_authentication_tutorial/page/edit_profile_page.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 
@@ -98,9 +99,14 @@ class UserWidget extends StatelessWidget {
     Utils.showSnackBar(context, 'Deleted the user');
   }
 
-  void editUser(BuildContext context, User user) => Navigator.of(context).push(
+  void editUser(BuildContext context, User user) =>
+
+      // TODO(chococigar): For some reason, using the command below results in null.
+      // Navigator.of(context).pushNamed(route.EditProfile, arguments: {user: user});
+
+      Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => EditUserPage(user: user),
+          builder: (context) => EditProfilePage(user: user),
         ),
       );
 }

@@ -1,4 +1,4 @@
-import 'package:firebase_authentication_tutorial/page/sign_in_page.dart';
+import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -132,6 +132,11 @@ class SignUpPage extends StatelessWidget {
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
                             );
+                            print("inside sign_up_page");
+                            if (Auth.instance.isSignedIn) {
+                              print("is signed in.");
+                              Navigator.of(context).pushNamed(route.Home);
+                            }
                           },
                         child:
                         Center(
@@ -162,11 +167,7 @@ class SignUpPage extends StatelessWidget {
                                   )
                               )
                           ),
-                          onPressed: () => Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (_) => SignInPage(),
-                            ),
-                          ),
+                          onPressed: () => Navigator.pushNamed(context, route.SignIn),
                           child: Center(
                             child: Text(
                               'Back',
