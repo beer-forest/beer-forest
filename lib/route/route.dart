@@ -3,26 +3,31 @@ import 'package:flutter/material.dart';
 // Define Routes
 import 'package:firebase_authentication_tutorial/page/sign_in_page.dart';
 import 'package:firebase_authentication_tutorial/page/sign_up_page.dart';
-import 'package:firebase_authentication_tutorial/page/user_home_page.dart';
-import 'package:firebase_authentication_tutorial/page/edit_user_page.dart';
+import 'package:firebase_authentication_tutorial/page/home_page.dart';
+import 'package:firebase_authentication_tutorial/page/edit_profile_page.dart';
+import 'package:firebase_authentication_tutorial/page/edit_profile_first_page.dart';
 
 // Route Names
-const String signinPage    = 'signin';
-const String signupPage    = 'signup';
-const String homePage     = 'home';
-const String settingsPage = 'settings';
+const String SignIn            = 'SignInPage';
+const String SignUp            = 'SignUpPage';
+const String Home              = 'HomePage';
+const String EditProfile       = 'EditProfilePage';
+const String EditProfileFirst  = 'EditProfileFirstPage';
+// const String settingsPage = 'settings';
 
 // Control our page route flow
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
-    case signinPage:
+    case SignIn:
       return MaterialPageRoute(builder: (context) => SignInPage());
-    case signupPage:
+    case SignUp:
       return MaterialPageRoute(builder: (context) => SignUpPage());
-    case homePage:
+    case Home:
       return MaterialPageRoute(builder: (context) => HomePage());
-    case settingsPage:
-      return MaterialPageRoute(builder: (context) => EditUserPage());
+    case EditProfile:
+      return MaterialPageRoute(builder: (context) => EditProfilePage());
+    case EditProfileFirst:
+      return MaterialPageRoute(builder: (context) => EditProfileFirstPage());
     default:
       throw('This route name does not exit');
   }

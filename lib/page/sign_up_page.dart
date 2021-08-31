@@ -135,7 +135,7 @@ class SignUpPage extends StatelessWidget {
                             print("inside sign_up_page");
                             if (Auth.instance.isSignedIn) {
                               print("is signed in.");
-                              Navigator.of(context).pushNamed(route.homePage);
+                              Navigator.of(context).pushNamed(route.Home);
                             }
                           },
                         child:
@@ -167,7 +167,7 @@ class SignUpPage extends StatelessWidget {
                                   )
                               )
                           ),
-                          onPressed: () => Navigator.pushNamed(context, route.signinPage),
+                          onPressed: () => Navigator.pushNamed(context, route.SignIn),
                           child: Center(
                             child: Text(
                               'Back',

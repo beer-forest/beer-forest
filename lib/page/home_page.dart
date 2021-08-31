@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.logout),
           onPressed: () {
             context.read<AuthenticationService>().signOut();
-            Navigator.of(context).pushNamed(route.signinPage);
+            Navigator.of(context).pushNamed(route.SignIn);
           },
         ),
       ),

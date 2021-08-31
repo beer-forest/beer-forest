@@ -4,16 +4,16 @@ import 'package:firebase_authentication_tutorial/model/user.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/user_form_widget.dart';
 
-class EditUserPage extends StatefulWidget {
+class EditProfilePage extends StatefulWidget {
   final User user;
 
-  const EditUserPage({Key key, @required this.user}) : super(key: key);
+  const EditProfilePage({Key key, @required this.user}) : super(key: key);
 
   @override
-  _EditUserPageState createState() => _EditUserPageState();
+  _EditProfilePageState createState() => _EditProfilePageState();
 }
 
-class _EditUserPageState extends State<EditUserPage> {
+class _EditProfilePageState extends State<EditProfilePage> {
   final _formKey = GlobalKey<FormState>();
 
   String name;

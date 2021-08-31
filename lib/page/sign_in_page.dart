@@ -85,7 +85,7 @@ class SignInPage extends StatelessWidget {
                             // TODO(chococigar) there is a known delay in sign in. for some reason you have to click twice.
                             if (Auth.instance.isSignedIn) {
                               print("is signed in.");
-                              Navigator.of(context).pushNamed(route.homePage);
+                              Navigator.of(context).pushNamed(route.Home);
                             }
                           },
                           child: Center(
@@ -121,7 +121,7 @@ class SignInPage extends StatelessWidget {
                                 )
                             )
                         ),
-                        onPressed: () => Navigator.of(context).pushNamed(route.signupPage),
+                        onPressed: () => Navigator.of(context).pushNamed(route.SignUp),
                         child:
                           Center(
                             child: Text('Sign up',

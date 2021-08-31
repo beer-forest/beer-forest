@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: AuthenticationWrapper(),
         onGenerateRoute: route.controller,
-        initialRoute: route.signinPage,
+        initialRoute: route.SignIn,
       ),
     );
   }
