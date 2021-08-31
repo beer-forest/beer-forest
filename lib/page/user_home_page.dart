@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: StreamBuilder<List<User>>(
-        stream: FirebaseApi.readUsers(),
+        stream: FirebaseApi.readMine(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
