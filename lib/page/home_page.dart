@@ -6,8 +6,8 @@ import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/add_user_dialog_widget.dart';
-import 'package:firebase_authentication_tutorial/widget/completed_user_list_widget.dart';
-import 'package:firebase_authentication_tutorial/widget/user_list_widget.dart';
+import 'package:firebase_authentication_tutorial/widget/match_list_widget.dart';
+import 'package:firebase_authentication_tutorial/widget/profile_widget.dart';
 
 import '../main.dart';
 
@@ -22,8 +22,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      UserListWidget(),
-      CompletedListWidget(),
+      MatchListWidget(),
+      ProfileWidget(),
     ];
 
     return Scaffold(
@@ -47,12 +47,12 @@ class _HomePageState extends State<HomePage> {
         }),
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.fact_check_outlined),
-            label: 'Users',
+            icon: Icon(Icons.people_alt_outlined, size: 28),
+            label: 'Matches',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.done, size: 28),
-            label: 'Completed',
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
           ),
         ],
       ),

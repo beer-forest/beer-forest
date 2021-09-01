@@ -3,16 +3,16 @@ import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/user_widget.dart';
 
-class UserListWidget extends StatelessWidget {
+class MatchListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<UsersProvider>(context);
-    final users = provider.user;
+    final users = provider.usersCompleted;
 
     return users.isEmpty
         ? Center(
             child: Text(
-              'No users.',
+              'No matches.',
               style: TextStyle(fontSize: 20),
             ),
           )
