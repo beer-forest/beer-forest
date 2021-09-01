@@ -7,7 +7,7 @@ class UserListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<UsersProvider>(context);
-    final users = provider.users;
+    final users = provider.user;
 
     return users.isEmpty
         ? Center(

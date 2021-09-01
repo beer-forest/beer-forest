@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_auth/firebase_auth.dart' as fire_auth;
 
 class UsersProvider extends ChangeNotifier {
   List<User> _users = [];
+  final auth_infouser = fire_auth.FirebaseAuth.instance.currentUser;
 
-  List<User> get users => _users.where((user) => user.isDone == false).toList();
+  List<User> get user => _users.where((user) => user.email == auth_infouser.email).toList();
 
   List<User> get usersCompleted =>
       _users.where((user) => user.isDone == true).toList();
