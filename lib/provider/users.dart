@@ -5,12 +5,23 @@ import 'package:firebase_auth/firebase_auth.dart' as fire_auth;
 
 class UsersProvider extends ChangeNotifier {
   List<User> _users = [];
+  List<User> prefs_all = [];
+
   final auth_infouser = fire_auth.FirebaseAuth.instance.currentUser;
 
   List<User> get user => _users.where((user) => user.email == auth_infouser.email).toList();
 
-  List<User> get usersCompleted =>
-      _users.where((user) => user.isDone == true).toList();
+  List<User> get users_pref_english => readOtherUserWithPrefEnglish(_users);
+  List<User> get users_pref_korean_literature => readOtherUserWithPrefKoreanLiterature(_users);
+  List<User> get users_pref_mathematics => readOtherUserWithPrefMathematics(_users);
+
+  List<User> get usersMatched {
+    prefs_all.addAll(this.users_pref_english);
+    prefs_all.addAll(this.users_pref_korean_literature);
+    prefs_all.addAll(this.users_pref_mathematics);
+    return prefs_all;
+  }
+
 
   void setUsers(List<User> users) =>
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -39,4 +50,15 @@ class UsersProvider extends ChangeNotifier {
 
     FirebaseApi.updateUser(user);
   }
+
+  static List<User> readOtherUserWithPrefEnglish(List<User> users) {
+    return users.where((user) =>  user.pref_english == true).toList();
+  }
+  static List<User> readOtherUserWithPrefKoreanLiterature(List<User> users) {
+    return users.where((user) =>  user.pref_korean_literature == true).toList();
+  }
+  static List<User> readOtherUserWithPrefMathematics(List<User> users) {
+    return users.where((user) =>  user.pref_mathematics == true).toList();
+  }
+
 }

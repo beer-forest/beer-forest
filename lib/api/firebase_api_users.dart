@@ -54,30 +54,6 @@ class FirebaseApi {
   }
 
 
-  static Stream<List<User>> readOtherUserWithPrefEnglish() =>
-    FirebaseFirestore.instance
-        .collection('user')
-        .where("pref_english", isEqualTo: true)
-        .snapshots()
-        .transform(Utils.transformer(User.fromJson));
-
-
-  static Stream<List<User>> readOtherUserWithPrefKoreanLiterature() =>
-    FirebaseFirestore.instance
-        .collection('user')
-        .where("pref_korean_literature", isEqualTo: true)
-        .snapshots()
-        .transform(Utils.transformer(User.fromJson));
-
-
-  static Stream<List<User>> readOtherUserWithPrefMathematics() =>
-    FirebaseFirestore.instance
-        .collection('user')
-        .where("pref_mathematics", isEqualTo: true)
-        .snapshots()
-        .transform(Utils.transformer(User.fromJson));
-
-
   static Future updateUser(User user) async {
     final docUser = FirebaseFirestore.instance.collection('user').doc(user.id);
 

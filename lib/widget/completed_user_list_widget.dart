@@ -7,7 +7,7 @@ class CompletedListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<UsersProvider>(context);
-    final users = provider.usersCompleted;
+    final users = provider.usersMatched;
 
     return users.isEmpty
         ? Center(
