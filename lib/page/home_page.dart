@@ -1,5 +1,6 @@
 import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
+import 'package:firebase_authentication_tutorial/widget/fake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final tabs = [
       MatchListWidget(),
+      FakeWidget(),
       ProfileWidget(),
     ];
 
@@ -49,6 +51,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.people_alt_outlined, size: 28),
             label: 'Matches',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'fake',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
