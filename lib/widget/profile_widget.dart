@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/user_widget.dart';
 
-class UserListWidget extends StatelessWidget {
+class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<UsersProvider>(context);
@@ -12,7 +12,7 @@ class UserListWidget extends StatelessWidget {
     return users.isEmpty
         ? Center(
             child: Text(
-              'No users.',
+              'NO PROFILE. THIS IS A BUG!!!!',
               style: TextStyle(fontSize: 20),
             ),
           )
