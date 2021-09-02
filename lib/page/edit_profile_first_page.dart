@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_authentication_tutorial/widget/base_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
@@ -26,32 +27,21 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
   void initState() {
     super.initState();
 
+    /*
     name = widget.user.name;
     email = widget.user.email;
     pref_english = widget.user.pref_english;
     pref_korean_literature = widget.user.pref_korean_literature;
     pref_mathematics = widget.user.pref_mathematics;
+    */
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Text('Edit User'),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () {
-            final provider =
-            Provider.of<UsersProvider>(context, listen: false);
-            provider.removeUser(widget.user);
-
-            Navigator.of(context).pop();
-          },
-        )
-      ],
-    ),
+    appBar: BaseAppBar(),
     body: Padding(
       padding: EdgeInsets.all(16),
+      /*
       child: Form(
         key: _formKey,
         child: UserFormWidget(
@@ -72,6 +62,7 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
           onSavedUser: saveUser,
         ),
       ),
+      */
     ),
   );
 

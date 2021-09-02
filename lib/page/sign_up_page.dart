@@ -135,7 +135,8 @@ class SignUpPage extends StatelessWidget {
                             print("inside sign_up_page");
                             if (Auth.instance.isSignedIn) {
                               print("is signed in.");
-                              Navigator.of(context).pushNamed(route.Home);
+                              // Navigator.of(context).pushNamed(route.Home);
+                              Navigator.of(context).pushNamed(route.EditProfileFirst);
                             }
                           },
                         child:

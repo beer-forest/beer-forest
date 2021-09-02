@@ -1,5 +1,5 @@
 import 'package:firebase_authentication_tutorial/route/route.dart' as route;
-import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
+import 'package:firebase_authentication_tutorial/widget/base_app_bar.dart';
 import 'package:firebase_authentication_tutorial/widget/fake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,19 +28,7 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: new InkWell(
-          child: new Text(MyApp.title),
-          onTap: () => Navigator.of(context).pushNamed(route.Home)
-        ),
-        leading: IconButton (
-          icon: Icon(Icons.logout),
-          onPressed: () {
-            context.read<AuthenticationService>().signOut();
-            Navigator.of(context).pushNamed(route.SignIn);
-          },
-        ),
-      ),
+      appBar: BaseAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white.withOpacity(0.7),
