@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
@@ -7,6 +8,9 @@ class UsersProvider extends ChangeNotifier {
   List<User> _users = [];
   List<User> prefs_all = [];
 
+  //TODO(hschoi1): hard coded for now. get from api
+  Map<String, bool> my_pref_map = {"pref_english":true, "pref_korean_literature":true, "pref_mathematics":true};
+
   final auth_infouser = fire_auth.FirebaseAuth.instance.currentUser;
 
   List<User> get user => _users.where((user) => user.email == auth_infouser.email).toList();
@@ -15,12 +19,16 @@ class UsersProvider extends ChangeNotifier {
   List<User> get users_pref_korean_literature => readOtherUserWithPrefKoreanLiterature(_users);
   List<User> get users_pref_mathematics => readOtherUserWithPrefMathematics(_users);
 
-  List<User> get usersMatched {
-    prefs_all.addAll(this.users_pref_english);
-    prefs_all.addAll(this.users_pref_korean_literature);
-    prefs_all.addAll(this.users_pref_mathematics);
-    return prefs_all;
-  }
+  List<String> get pref_list => ["pref_english", "pref_korean_literature", "pref_mathematics"];
+
+
+
+  // TODO(hschoi) : get map_ref_users using pref_list
+  Map<String, List<User>> get map_pref_users => {
+    "pref_english": this.users_pref_english,
+    "pref_korean_literature": this.users_pref_korean_literature,
+    "pref_mathematics": this.users_pref_mathematics
+  };
 
 
   void setUsers(List<User> users) =>
@@ -51,14 +59,37 @@ class UsersProvider extends ChangeNotifier {
     FirebaseApi.updateUser(user);
   }
 
-  static List<User> readOtherUserWithPrefEnglish(List<User> users) {
-    return users.where((user) =>  user.pref_english == true).toList();
+   List<User> readOtherUserWithPrefEnglish(List<User> users) {
+    if (my_pref_map['pref_english'] == true) {
+      return users
+          .where((user) => user.email != this.auth_infouser.email)
+          .where((user) => user.pref_english == true)
+          .toList();
+    }
+    else {
+      return [];
+    }
   }
-  static List<User> readOtherUserWithPrefKoreanLiterature(List<User> users) {
-    return users.where((user) =>  user.pref_korean_literature == true).toList();
+   List<User> readOtherUserWithPrefKoreanLiterature(List<User> users) {
+    if (my_pref_map['pref_korean_literature'] == true) {
+      return users
+          .where((user) => user.email != this.auth_infouser.email)
+          .where((user) => user.pref_korean_literature == true)
+          .toList();
+    }
+    else {
+      return [];
+    }
   }
-  static List<User> readOtherUserWithPrefMathematics(List<User> users) {
-    return users.where((user) =>  user.pref_mathematics == true).toList();
+  List<User> readOtherUserWithPrefMathematics(List<User> users) {
+    if (my_pref_map['pref_mathematics'] == true) {
+      return users
+          .where((user) => user.email != this.auth_infouser.email)
+          .where((user) => user.pref_mathematics == true)
+          .toList();
+    }
+    else {
+      return [];
+    }
   }
-
 }
