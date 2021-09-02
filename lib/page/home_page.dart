@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
-import 'package:firebase_authentication_tutorial/widget/add_user_dialog_widget.dart';
 import 'package:firebase_authentication_tutorial/widget/match_list_widget.dart';
 import 'package:firebase_authentication_tutorial/widget/profile_widget.dart';
 
@@ -30,7 +29,10 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(MyApp.title),
+        title: new InkWell(
+          child: new Text(MyApp.title),
+          onTap: () => Navigator.of(context).pushNamed(route.Home)
+        ),
         leading: IconButton (
           icon: Icon(Icons.logout),
           onPressed: () {
@@ -81,18 +83,6 @@ class _HomePageState extends State<HomePage> {
               }
           }
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        backgroundColor: Colors.black,
-        onPressed: () => showDialog(
-          context: context,
-          builder: (context) => AddUserDialogWidget(),
-          barrierDismissible: false,
-        ),
-        child: Icon(Icons.add),
       ),
     );
   }
