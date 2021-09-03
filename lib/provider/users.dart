@@ -20,6 +20,9 @@ class UsersProvider extends ChangeNotifier {
   List<User> get users_pref_mathematics => readOtherUserWithPrefMathematics(_users);
 
   List<String> get pref_list => ["pref_english", "pref_korean_literature", "pref_mathematics"];
+  Map<String, String> get pref_to_kor => {"pref_english":"영어",
+                                          "pref_korean_literature": "한국어",
+                                          "pref_mathematics": "수학"};
 
 
 
