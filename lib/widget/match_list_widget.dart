@@ -12,7 +12,7 @@ class MatchListWidget extends StatelessWidget {
     final map_pref_users = provider.map_pref_users;
     final pref_list = provider.pref_list;
     final pref_size_list = {};
-    int each_pref_index = 0;
+    int index_in_pref = 0;
     int pref_index = 0;
 
     // size per preference
@@ -51,14 +51,14 @@ class MatchListWidget extends StatelessWidget {
           final pref = pref_list[pref_index];
           final users_by_pref = map_pref_users[pref];
           if (! users_by_pref.isEmpty) {
-            final user = users_by_pref[each_pref_index];
+            final user = users_by_pref[index_in_pref];
 
-            if (each_pref_index ==  (pref_size_list[pref]-1)) {
-              each_pref_index = 0;
+            if (index_in_pref ==  (pref_size_list[pref]-1)) {
+              index_in_pref = 0;
               pref_index += 1;
             }
             else {
-              each_pref_index += 1;
+              index_in_pref += 1;
             }
             return UserPrefWidget(user: user, pref: pref);
           }
