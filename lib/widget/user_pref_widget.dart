@@ -1,9 +1,8 @@
+import 'package:firebase_authentication_tutorial/page/matched_user_profile_page.dart';
 import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/model/user.dart';
-import 'package:firebase_authentication_tutorial/page/edit_profile_page.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 
@@ -30,7 +29,7 @@ class UserPrefWidget extends StatelessWidget {
     final pref_to_kor = provider.pref_to_kor;
 
     return GestureDetector(
-      onTap: () => editUser(context, user),
+      onTap: () => viewUser(context, user),
       child: Container(
         color: Colors.white,
         padding: EdgeInsets.all(20),
@@ -68,14 +67,11 @@ class UserPrefWidget extends StatelessWidget {
     );
   }
 
-  void editUser(BuildContext context, User user) =>
-
-      // TODO(chococigar): For some reason, using the command below results in null.
-  // Navigator.of(context).pushNamed(route.EditProfile, arguments: {user: user});
+  void viewUser(BuildContext context, User user) =>
 
   Navigator.of(context).push(
     MaterialPageRoute(
-      builder: (context) => EditProfilePage(user: user),
+      builder: (context) => MatchedUserProfilePage(user: user),
     ),
   );
 }
