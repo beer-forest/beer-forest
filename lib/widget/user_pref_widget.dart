@@ -18,82 +18,64 @@ class UserPrefWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Slidable(
-          actionPane: SlidableDrawerActionPane(),
-          key: Key(user.id),
-          actions: [
-            IconSlideAction(
-              color: Colors.green,
-              onTap: () => editUser(context, user),
-              caption: 'Edit',
-              icon: Icons.edit,
-            )
-          ],
-          secondaryActions: [
-            IconSlideAction(
-              color: Colors.red,
-              caption: 'Delete',
-              onTap: () => deleteUser(context, user),
-              icon: Icons.delete,
-            )
-          ],
-          child: buildUser(context),
-        ),
-      );
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: buildUser(context),
+    );
+  }
 
-  Widget buildUser(BuildContext context) => GestureDetector(
-        onTap: () => editUser(context, user),
-        child: Container(
-          color: Colors.white,
-          padding: EdgeInsets.all(20),
-          child: Row(
-            children: [
-              const SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      user.name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 22,
-                      ),
+  Widget buildUser(BuildContext context) {
+    final provider = Provider.of<UsersProvider>(context);
+    final pref_to_kor = provider.pref_to_kor;
+
+    return GestureDetector(
+      onTap: () => editUser(context, user),
+      child: Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(20),
+        child: Row(
+          children: [
+            const SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    user.name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme
+                          .of(context)
+                          .primaryColor,
+                      fontSize: 22,
                     ),
-                    if (pref.isNotEmpty)
-                      Container(
-                        margin: EdgeInsets.only(top: 4),
-                        child: Text(
-                          pref,
-                          style: TextStyle(fontSize: 20, height: 1.5),
-                        ),
-                      )
-                  ],
-                ),
+                  ),
+                  if (pref.isNotEmpty)
+                    Container(
+                      margin: EdgeInsets.only(top: 4),
+                      child: Text(
+                        "와 " + pref_to_kor[pref] + "을(를) 배우시겠습니까?",
+                        style: TextStyle(fontSize: 20, height: 1.5),
+                      ),
+                    )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
-
-  void deleteUser(BuildContext context, User user) {
-    final provider = Provider.of<UsersProvider>(context, listen: false);
-    provider.removeUser(user);
-
-    Utils.showSnackBar(context, 'Deleted the user');
+      ),
+    );
   }
 
   void editUser(BuildContext context, User user) =>
 
       // TODO(chococigar): For some reason, using the command below results in null.
-      // Navigator.of(context).pushNamed(route.EditProfile, arguments: {user: user});
+  // Navigator.of(context).pushNamed(route.EditProfile, arguments: {user: user});
 
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => EditProfilePage(user: user),
-        ),
-      );
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => EditProfilePage(user: user),
+    ),
+  );
 }
