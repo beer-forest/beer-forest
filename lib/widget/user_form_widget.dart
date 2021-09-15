@@ -6,11 +6,16 @@ class UserFormWidget extends StatelessWidget {
   final bool pref_english;
   final bool pref_korean_literature;
   final bool pref_mathematics;
+  final String inviter;
+  final List<String> friends;
+
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedEmail;
   final ValueChanged<bool> onChangedPrefEnglish;
   final ValueChanged<bool> onChangedPrefKoreanLiterature;
   final ValueChanged<bool> onChangedPrefMathematics;
+  final ValueChanged<String> onChangedInviter;
+  final ValueChanged<List<String>> onChangedFriends;
 
   final VoidCallback onSavedUser;
   final TextEditingController myController;
@@ -22,13 +27,18 @@ class UserFormWidget extends StatelessWidget {
     this.pref_english = false,
     this.pref_korean_literature = false,
     this.pref_mathematics = false,
+    this.inviter = '',
+    this.friends = [],
 
     @required this.onChangedName,
     @required this.onChangedEmail,
     @required this.onChangedPrefEnglish,
     @required this.onChangedPrefKoreanLiterature,
     @required this.onChangedPrefMathematics,
+    @required this.onChangedInviter,
+    @required this.onChangedFriends,
     @required this.onSavedUser,
+
     this.myController
   }) : super(key: key);
 
@@ -42,6 +52,7 @@ class UserFormWidget extends StatelessWidget {
             buildPrefEnglish(),
             buildPrefKoreanLiterature(),
             buildPrefMathematics(),
+            buildInviter(),
             buildButton(),
           ],
         ),
@@ -89,6 +100,27 @@ class UserFormWidget extends StatelessWidget {
       value: pref_mathematics,
       onChanged: onChangedPrefMathematics
   );
+
+
+  Widget buildInviter() => TextFormField(
+    maxLines: 1,
+    initialValue: inviter,
+    onChanged: onChangedInviter,
+    decoration: InputDecoration(
+      border: UnderlineInputBorder(),
+      labelText: 'inviter',
+    ),
+  );
+  Widget buildFriends() => TextFormField(
+    maxLines: 1,
+    initialValue: friends,
+    onChanged: onChangedFriends,
+    decoration: InputDecoration(
+      border: UnderlineInputBorder(),
+      labelText: 'friends',
+    ),
+  );
+
 
   Widget buildButton() => SizedBox(
         width: double.infinity,

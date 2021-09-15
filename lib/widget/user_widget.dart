@@ -2,13 +2,13 @@ import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_authentication_tutorial/model/userprofile.dart';
 import 'package:firebase_authentication_tutorial/page/edit_profile_page.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class UserWidget extends StatelessWidget {
-  final User user;
+  final UserProfile user;
 
   const UserWidget({
     @required this.user,
@@ -48,21 +48,6 @@ class UserWidget extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Row(
             children: [
-              Checkbox(
-                activeColor: Theme.of(context).primaryColor,
-                checkColor: Colors.white,
-                value: user.isDone,
-                onChanged: (_) {
-                  final provider =
-                      Provider.of<UsersProvider>(context, listen: false);
-                  final isDone = provider.toggleUserStatus(user);
-
-                  Utils.showSnackBar(
-                    context,
-                    isDone ? 'User completed' : 'User marked incomplete',
-                  );
-                },
-              ),
               const SizedBox(width: 20),
               Expanded(
                 child: Column(
@@ -92,14 +77,14 @@ class UserWidget extends StatelessWidget {
         ),
       );
 
-  void deleteUser(BuildContext context, User user) {
+  void deleteUser(BuildContext context, UserProfile user) {
     final provider = Provider.of<UsersProvider>(context, listen: false);
     provider.removeUser(user);
 
     Utils.showSnackBar(context, 'Deleted the user');
   }
 
-  void editUser(BuildContext context, User user) =>
+  void editUser(BuildContext context, UserProfile user) =>
 
       // TODO(chococigar): For some reason, using the command below results in null.
       // Navigator.of(context).pushNamed(route.EditProfile, arguments: {user: user});

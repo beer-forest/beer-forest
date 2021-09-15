@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_authentication_tutorial/model/userprofile.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/matched_user_widget.dart';
 
 class MatchedUserProfilePage extends StatefulWidget {
-  final User user;
+  final UserProfile user;
 
   const MatchedUserProfilePage({Key key, @required this.user}) : super(key: key);
 

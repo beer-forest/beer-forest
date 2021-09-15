@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_authentication_tutorial/model/userprofile.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fire_auth;
 
 class FirebaseApi {
 
-  static Future<String> createUser(User user) async {
+  static Future<String> createUser(UserProfile user) async {
     final docUser = FirebaseFirestore.instance.collection('user').doc();
     user.id = docUser.id;
     await docUser.set(user.toJson());
@@ -13,20 +13,20 @@ class FirebaseApi {
     return docUser.id;
   }
 
-  static Stream<List<User>> readUsers() =>
+  static Stream<List<UserProfile>> readUsers() =>
       FirebaseFirestore.instance
           .collection('user')
           .orderBy(UserField.createdTime, descending: true)
           .snapshots()
-          .transform(Utils.transformer(User.fromJson));
+          .transform(Utils.transformer(UserProfile.fromJson));
 
-  static Stream<List<User>> readMine() {
+  static Stream<List<UserProfile>> readMine() {
     final user = fire_auth.FirebaseAuth.instance.currentUser;
     return FirebaseFirestore.instance
         .collection('user')
         .where("email", isEqualTo: user.email)
         .snapshots()
-        .transform(Utils.transformer(User.fromJson));
+        .transform(Utils.transformer(UserProfile.fromJson));
   }
 
   static Future readMyPreference() async {
@@ -34,7 +34,7 @@ class FirebaseApi {
     bool my_pref_english;
     bool my_pref_korean_literature;
     bool my_pref_mathematics;
-    User myself;
+    UserProfile myself;
     DocumentSnapshot my_doc;
     my_doc = await FirebaseFirestore.instance
         .collection('user')
@@ -42,7 +42,7 @@ class FirebaseApi {
         .get()
         .then((snapshot) => snapshot.docs[0]);
 
-    myself = User.fromJson(my_doc.data());
+    myself = UserProfile.fromJson(my_doc.data());
     my_pref_english = myself.pref_english;
     my_pref_korean_literature = myself.pref_korean_literature;
     my_pref_mathematics = myself.pref_mathematics;
@@ -54,13 +54,13 @@ class FirebaseApi {
   }
 
 
-  static Future updateUser(User user) async {
+  static Future updateUser(UserProfile user) async {
     final docUser = FirebaseFirestore.instance.collection('user').doc(user.id);
 
     await docUser.update(user.toJson());
   }
 
-  static Future deleteUser(User user) async {
+  static Future deleteUser(UserProfile user) async {
     final docUser = FirebaseFirestore.instance.collection('user').doc(user.id);
 
     await docUser.delete();

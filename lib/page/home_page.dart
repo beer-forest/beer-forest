@@ -4,7 +4,7 @@ import 'package:firebase_authentication_tutorial/widget/fake_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/api/firebase_api_users.dart';
-import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_authentication_tutorial/model/userprofile.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/match_list_widget.dart';
 import 'package:firebase_authentication_tutorial/widget/profile_widget.dart';
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: StreamBuilder<List<User>>(
+      body: StreamBuilder<List<UserProfile>>(
         stream: FirebaseApi.readUsers(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
