@@ -35,35 +35,6 @@ class SignUpPage extends StatelessWidget {
             padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
             child: Column(
                 children: <Widget>[
-                  TextField(
-                    controller: firstnameController,
-                    decoration: InputDecoration(
-                        labelText: 'NAME',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                            hintText: 'Jane',
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green)
-                        )
-                    ),
-                  ),
-                  SizedBox(height: 10.0),
-                  TextField(
-                    controller: lastnameController,
-                    decoration: InputDecoration(
-                        labelText: 'LAST NAME',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                            hintText: 'Doe',
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green)
-                        )
-                    ),
-                  ),
                   SizedBox(height: 10.0),
                   TextField(
                     controller: emailController,
@@ -103,7 +74,6 @@ class SignUpPage extends StatelessWidget {
                             color: Colors.grey),
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.green))),
-                    obscureText: true,
                   ),
                   SizedBox(height: 10.0),
                   Container(

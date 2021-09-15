@@ -24,7 +24,7 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
   void initState() {
     super.initState();
 
-    name = 'She a hoe';
+    name = 'name';
     email = '';
     pref_english = false;
     pref_korean_literature = false;
