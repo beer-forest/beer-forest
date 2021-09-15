@@ -52,6 +52,15 @@ class UserPrefWidget extends StatelessWidget {
                   ),
                   if (pref.isNotEmpty)
                     Container(
+                      decoration: new BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new NetworkImage(
+                            "https://i.imgflip.com/4/4t0m5.jpg",
+                          ),
+                        ),
+                      ),
                       margin: EdgeInsets.only(top: 4),
                       child: Text(
                         "와 " + pref_to_kor[pref] + "을(를) 배우시겠습니까?",
