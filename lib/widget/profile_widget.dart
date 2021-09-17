@@ -48,10 +48,16 @@ class ProfileWidget extends StatelessWidget {
                 children: <Widget>[
                   Avatar(
                     // avatarUrl: _currentUser?.avatarUrl,
+                    // avatarUrl: "https://static.wikia.nocookie.net/meme/images/1/16/Yee.png/revision/latest?cb=20190307094426",
                     onTap: () {},
                   ),
                   Text(
-                      "HELLO " + _currentUser.name),
+                      "Hello " + _currentUser.name,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .headline5,
+                  ),
                       // "Hi ${_currentUser?.displayName ??
                       //     'nice to see you here.'}"),
                 ],
@@ -76,7 +82,7 @@ class ProfileWidget extends StatelessWidget {
                             style: Theme
                                 .of(context)
                                 .textTheme
-                                .display1,
+                                .headline6,
                           ),
                           TextFormField(
                             decoration: InputDecoration(hintText: "Password"),

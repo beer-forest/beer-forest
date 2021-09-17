@@ -57,7 +57,7 @@ class UserPrefWidget extends StatelessWidget {
                         image: new DecorationImage(
                           fit: BoxFit.fill,
                           image: new NetworkImage(
-                            "https://i.imgflip.com/4/4t0m5.jpg",
+                            "https://static.wikia.nocookie.net/meme/images/1/16/Yee.png/revision/latest?cb=20190307094426",
                           ),
                         ),
                       ),
