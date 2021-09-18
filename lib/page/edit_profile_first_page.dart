@@ -20,7 +20,7 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
   bool pref_korean_literature;
   bool pref_mathematics;
   String inviter;
-  List<String> friends;
+  List<String> friendsList;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
     pref_korean_literature = false;
     pref_mathematics = false;
     inviter = '';
-    friends = [''];
+    friendsList = [''];
   }
 
   @override
@@ -54,8 +54,8 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
               setState(() => this.pref_mathematics = pref_mathematics),
           onChangedInviter: (inviter) =>
               setState(() => this.inviter = inviter),
-          onChangedFriends: (friends) =>
-              setState(() => this.friends = friends),
+          onChangedFriends: (friendsList) =>
+              setState(() => this.friendsList = friendsList),
           onSavedUser: saveUser,
         ),
       ),
@@ -77,7 +77,7 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
         pref_mathematics: pref_mathematics,
         createdTime: DateTime.now(),
         inviter: inviter,
-        friends: friends
+        friendsList: friendsList
       );
 
       final provider = Provider.of<UsersProvider>(context, listen: false);

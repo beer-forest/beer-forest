@@ -14,7 +14,7 @@ class UserProfile {
   bool pref_korean_literature;
   bool pref_mathematics;
   String inviter;
-  List<String> friends;
+  List<String> friendsList;
 
   UserProfile({
     @required this.createdTime,
@@ -25,7 +25,7 @@ class UserProfile {
     this.pref_korean_literature = false,
     this.pref_mathematics = false,
     this.inviter,
-    this.friends
+    this.friendsList
   });
 
   static UserProfile fromJson(Map<String, dynamic> json) => UserProfile(
@@ -37,7 +37,7 @@ class UserProfile {
         pref_korean_literature: json['pref_korean_literature'],
         pref_mathematics: json['pref_mathematics'],
         inviter: json['inviter'],
-        friends: json['friends']
+        friendsList: json['friendsList']
       );
 
   Map<String, dynamic> toJson() => {
@@ -49,6 +49,6 @@ class UserProfile {
         'pref_korean_literature': pref_korean_literature,
         'pref_mathematics': pref_mathematics,
         'inviter': inviter,
-        'friends': friends,
+        'friendsList': friendsList,
       };
 }

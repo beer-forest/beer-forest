@@ -1,46 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+//import 'package:firebase_authentication_tutorial/widget/friend_list_widget.dart';
 
-class UserFormWidget extends StatelessWidget {
-  final String name;
-  final String email;
-  final bool pref_english;
-  final bool pref_korean_literature;
-  final bool pref_mathematics;
-  final String inviter;
-  final List<String> friends;
-
-  final ValueChanged<String> onChangedName;
-  final ValueChanged<String> onChangedEmail;
-  final ValueChanged<bool> onChangedPrefEnglish;
-  final ValueChanged<bool> onChangedPrefKoreanLiterature;
-  final ValueChanged<bool> onChangedPrefMathematics;
-  final ValueChanged<String> onChangedInviter;
-  final ValueChanged<List<String>> onChangedFriends;
-
-  final VoidCallback onSavedUser;
-  final TextEditingController myController;
+class UserFormWidget extends StatefulWidget {
 
   const UserFormWidget({
     Key key,
-    this.name = '',
-    this.email = '',
-    this.pref_english = false,
-    this.pref_korean_literature = false,
-    this.pref_mathematics = false,
-    this.inviter = '',
-    this.friends = [],
+    name = '',
+    email = '',
+    pref_english = false,
+    pref_korean_literature = false,
+    pref_mathematics = false,
+    inviter = '',
+    friendsList,
 
-    @required this.onChangedName,
-    @required this.onChangedEmail,
-    @required this.onChangedPrefEnglish,
-    @required this.onChangedPrefKoreanLiterature,
-    @required this.onChangedPrefMathematics,
-    @required this.onChangedInviter,
-    @required this.onChangedFriends,
-    @required this.onSavedUser,
+    @required onChangedName,
+    @required onChangedEmail,
+    @required onChangedPrefEnglish,
+    @required onChangedPrefKoreanLiterature,
+    @required onChangedPrefMathematics,
+    @required onChangedInviter,
+    @required onChangedFriends,
+    @required onSavedUser,
 
-    this.myController
+    nameController
   }) : super(key: key);
+
+  @override
+  _UserFormWidgetState createState() => _UserFormWidgetState();
+}
+class _UserFormWidgetState extends State<UserFormWidget> {
+
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController nameController;
+  static List<String> friendsList = [null];
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  String name = '';
+  final String email = '';
+  final bool pref_english = false;
+  final bool pref_korean_literature = false;
+  final bool pref_mathematics = false;
+  String inviter = '';
+
+  ValueChanged<String> onChangedName;
+  ValueChanged<String> onChangedEmail;
+  ValueChanged<bool> onChangedPrefEnglish;
+  ValueChanged<bool> onChangedPrefKoreanLiterature;
+  ValueChanged<bool> onChangedPrefMathematics;
+  ValueChanged<String> onChangedInviter;
+  ValueChanged<List<String>> onChangedFriends;
+
+  VoidCallback onSavedUser;
+
+
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
@@ -53,6 +77,7 @@ class UserFormWidget extends StatelessWidget {
             buildPrefKoreanLiterature(),
             buildPrefMathematics(),
             buildInviter(),
+            buildFriends(),
             buildButton(),
           ],
         ),
@@ -111,13 +136,21 @@ class UserFormWidget extends StatelessWidget {
       labelText: 'inviter',
     ),
   );
-  Widget buildFriends() => TextFormField(
-    maxLines: 1,
-    initialValue: friends,
-    onChanged: onChangedFriends,
-    decoration: InputDecoration(
-      border: UnderlineInputBorder(),
-      labelText: 'friends',
+
+  Widget buildFriends() => Form(
+    key: _formKey,
+    child: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // name textfield
+          SizedBox(height: 20,),
+          Text('Add Friends', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),),
+          ..._getFriends(),
+          SizedBox(height: 40,),
+        ],
+      ),
     ),
   );
 
@@ -126,10 +159,99 @@ class UserFormWidget extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.black),
+            backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
           ),
           onPressed: onSavedUser,
           child: Text('Save'),
         ),
       );
+
+  /// get firends text-fields
+  List<Widget> _getFriends(){
+    List<Widget> friendsTextFields = [];
+    for(int i=0; i<friendsList.length; i++){
+      friendsTextFields.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Row(
+              children: [
+                Expanded(child: FriendTextFields(i)),
+                SizedBox(width: 16,),
+                // we need add button at last friends row
+                _addRemoveButton(i == friendsList.length-1, i),
+              ],
+            ),
+          )
+      );
+    }
+    return friendsTextFields;
+  }
+
+  /// add / remove button
+  Widget _addRemoveButton(bool add, int index){
+    return InkWell(
+      onTap: (){
+        if(add){
+          // add new text-fields at the top of all friends textfields
+          friendsList.insert(0, null);
+        }
+        else friendsList.removeAt(index);
+        setState((){});
+      },
+      child: Container(
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: (add) ? Colors.green : Colors.red,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Icon((add) ? Icons.add : Icons.remove, color: Colors.white,),
+      ),
+    );
+  }
+
+}
+
+
+class FriendTextFields extends StatefulWidget {
+  final int index;
+  FriendTextFields(this.index);
+  @override
+  _FriendTextFieldsState createState() => _FriendTextFieldsState();
+}
+
+class _FriendTextFieldsState extends State<FriendTextFields> {
+  TextEditingController _nameController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _nameController.text = _UserFormWidgetState.friendsList[widget.index] ?? '';
+    });
+
+    return TextFormField(
+      controller: _nameController,
+      onChanged: (v) => _UserFormWidgetState.friendsList[widget.index] = v,
+      decoration: InputDecoration(
+          hintText: 'Enter your friend\'s name'
+      ),
+      validator: (v){
+        if(v.trim().isEmpty) return 'Please enter something';
+        return null;
+      },
+    );
+  }
 }

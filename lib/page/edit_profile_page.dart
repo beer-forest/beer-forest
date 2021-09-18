@@ -22,7 +22,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   bool pref_korean_literature;
   bool pref_mathematics;
   String inviter;
-  List<String> friends;
+  List<String> friendsList;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     pref_korean_literature = widget.user.pref_korean_literature;
     pref_mathematics = widget.user.pref_mathematics;
     inviter = widget.user.inviter;
-    friends = widget.user.friends;
+    friendsList = widget.user.friendsList;
   }
 
   @override
@@ -75,8 +75,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   setState(() => this.pref_mathematics = pref_mathematics),
               onChangedInviter: (inviter) =>
                   setState(() => this.inviter = inviter),
-              onChangedFriends: (friends) =>
-                  setState(() => this.friends = friends),
+              onChangedFriends: (friendsList) =>
+                  setState(() => this.friendsList = friendsList),
               onSavedUser: saveUser,
             ),
           ),
@@ -92,7 +92,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
       final provider = Provider.of<UsersProvider>(context, listen: false);
 
       provider.updateUser(widget.user, name, email,
-          pref_english, pref_korean_literature, pref_mathematics);
+          pref_english, pref_korean_literature, pref_mathematics,
+          inviter, friendsList);
 
       Navigator.of(context).pop();
     }

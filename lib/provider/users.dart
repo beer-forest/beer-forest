@@ -46,14 +46,14 @@ class UsersProvider extends ChangeNotifier {
 
   void updateUser(UserProfile user, String name, String email,
       bool pref_english, bool pref_korean_literature, bool pref_mathematics,
-      inviter, friends) {
+      inviter, friendsList) {
     user.name = name;
     user.email = email;
     user.pref_english = pref_english;
     user.pref_korean_literature = pref_korean_literature;
     user.pref_mathematics = pref_mathematics;
     user.inviter = inviter;
-    user.friends = friends;
+    user.friendsList = friendsList;
 
     FirebaseApi.updateUser(user);
   }
