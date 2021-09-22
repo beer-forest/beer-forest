@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart' as fire_auth;
 class FirebaseApi {
 
   static Future<String> createUser(UserProfile user) async {
-    final docUser = FirebaseFirestore.instance.collection('user').doc();
+    final docUser = FirebaseFirestore.instance.collection('userprofile').doc();
     user.id = docUser.id;
     await docUser.set(user.toJson());
 
@@ -15,7 +15,7 @@ class FirebaseApi {
 
   static Stream<List<UserProfile>> readUsers() =>
       FirebaseFirestore.instance
-          .collection('user')
+          .collection('userprofile')
           .orderBy(UserField.createdTime, descending: true)
           .snapshots()
           .transform(Utils.transformer(UserProfile.fromJson));
@@ -23,7 +23,7 @@ class FirebaseApi {
   static Stream<List<UserProfile>> readMine() {
     final user = fire_auth.FirebaseAuth.instance.currentUser;
     return FirebaseFirestore.instance
-        .collection('user')
+        .collection('userprofile')
         .where("email", isEqualTo: user.email)
         .snapshots()
         .transform(Utils.transformer(UserProfile.fromJson));
@@ -37,7 +37,7 @@ class FirebaseApi {
     UserProfile myself;
     DocumentSnapshot my_doc;
     my_doc = await FirebaseFirestore.instance
-        .collection('user')
+        .collection('userprofile')
         .where("email", isEqualTo: user.email)
         .get()
         .then((snapshot) => snapshot.docs[0]);
@@ -55,13 +55,13 @@ class FirebaseApi {
 
 
   static Future updateUser(UserProfile user) async {
-    final docUser = FirebaseFirestore.instance.collection('user').doc(user.id);
+    final docUser = FirebaseFirestore.instance.collection('userprofile').doc(user.id);
 
     await docUser.update(user.toJson());
   }
 
   static Future deleteUser(UserProfile user) async {
-    final docUser = FirebaseFirestore.instance.collection('user').doc(user.id);
+    final docUser = FirebaseFirestore.instance.collection('userprofile').doc(user.id);
 
     await docUser.delete();
   }
