@@ -37,8 +37,9 @@ class UserProfile {
         pref_korean_literature: json['pref_korean_literature'],
         pref_mathematics: json['pref_mathematics'],
         inviter: json['inviter'],
-        friendsList: json['friendsList']
+        friendsList: new List<String>.from(json['friendsList'])
       );
+
 
   Map<String, dynamic> toJson() => {
         'createdTime': Utils.fromDateTimeToJson(createdTime),
