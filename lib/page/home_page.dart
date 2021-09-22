@@ -1,3 +1,4 @@
+import 'package:firebase_authentication_tutorial/page/sign_in_page.dart';
 import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:firebase_authentication_tutorial/widget/base_app_bar.dart';
 import 'package:firebase_authentication_tutorial/widget/fake_widget.dart';
@@ -9,8 +10,6 @@ import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/match_list_widget.dart';
 import 'package:firebase_authentication_tutorial/widget/profile_widget.dart';
 
-import '../main.dart';
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -21,6 +20,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO(chococigar@), DEVTEST remove after dev testing
+    SignInPage().fakeSignin(context);
     final tabs = [
       MatchListWidget(),
       FakeWidget(),

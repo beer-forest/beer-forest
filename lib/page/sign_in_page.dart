@@ -142,4 +142,11 @@ class SignInPage extends StatelessWidget {
       ),
     );
   }
+
+  /* for dev use only */
+  void fakeSignin(BuildContext context) {
+  context.watch<AuthenticationService>().signIn(
+    email: "learnmate@gmail.com",
+    password: "learnmate123!");
+  }
 }

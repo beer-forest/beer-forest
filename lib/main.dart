@@ -39,7 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         // home: AuthenticationWrapper(),
         onGenerateRoute: route.controller,
-        initialRoute: route.SignIn,
+        // TODO(chococigar@), DEVTEST remove after dev testing
+        initialRoute: route.Home, // initialRoute: route.SignIn,
+
       ),
     );
   }
