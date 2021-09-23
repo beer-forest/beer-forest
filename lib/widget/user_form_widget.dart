@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import 'package:firebase_authentication_tutorial/widget/friend_list_widget.dart';
 
 class UserFormWidget extends StatefulWidget {
 
   const UserFormWidget({
     Key key,
-    name = '',
-    email = '',
-    pref_english = false,
-    pref_korean_literature = false,
-    pref_mathematics = false,
-    inviter = '',
+    name,
+    email,
+    pref_english,
+    pref_korean_literature,
+    pref_mathematics,
+    inviter,
     friendsList,
 
     @required onChangedName,
@@ -47,12 +46,13 @@ class _UserFormWidgetState extends State<UserFormWidget> {
     super.dispose();
   }
 
-  String name = '';
-  final String email = '';
-  final bool pref_english = false;
-  final bool pref_korean_literature = false;
-  final bool pref_mathematics = false;
-  String inviter = '';
+  //String name;
+  String name;
+  String email;
+  bool pref_english = false;
+  bool pref_korean_literature = false;
+  bool pref_mathematics = false;
+  String inviter;
 
   ValueChanged<String> onChangedName;
   ValueChanged<String> onChangedEmail;
