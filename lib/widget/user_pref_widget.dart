@@ -7,7 +7,7 @@ import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class UserPrefWidget extends StatelessWidget {
-  final User user;
+  final UserModel user;
   final String pref;
 
   const UserPrefWidget({
@@ -76,7 +76,7 @@ class UserPrefWidget extends StatelessWidget {
     );
   }
 
-  void viewUser(BuildContext context, User user) =>
+  void viewUser(BuildContext context, UserModel user) =>
 
   Navigator.of(context).push(
     MaterialPageRoute(

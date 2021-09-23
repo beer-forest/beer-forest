@@ -5,7 +5,7 @@ import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/user_form_widget.dart';
 
 class EditProfilePage extends StatefulWidget {
-  final User user;
+  final UserModel user;
 
   const EditProfilePage({Key key, @required this.user}) : super(key: key);
 

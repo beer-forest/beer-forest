@@ -34,12 +34,19 @@ class AuthenticationService {
   /// error messages. That way you can throw, return or whatever you prefer with that instead.
   Future<String> signUp({String email, String password}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
       return "Signed up";
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
   }
+  /*
+  Future<User> getUser() async {
+    var firebaseUser = await _firebaseAuth.currentUser();
+    return User(firebaseUser.uid, displayName: firebaseUser.displayName);
+  }
+  */
 }
 
 class Auth {

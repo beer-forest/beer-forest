@@ -60,7 +60,7 @@ class _EditProfileFirstPageState extends State<EditProfileFirstPage> {
     if (!isValid) {
       return;
     } else {
-      final user = User(
+      final user = UserModel(
         id: DateTime.now().toString(),
         name: name,
         email: email,

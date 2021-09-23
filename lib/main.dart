@@ -2,6 +2,7 @@ import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_authentication_tutorial/service/authentication_service.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
+import 'package:firebase_authentication_tutorial/service/locator.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:provider/provider.dart';
 
 
 Future<void> main() async {
+  setupServices();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());

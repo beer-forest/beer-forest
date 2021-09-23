@@ -5,7 +5,7 @@ class UserField {
   static const createdTime = 'createdTime';
 }
 
-class User {
+class UserModel {
   DateTime createdTime;
   String name;
   String id;
@@ -15,7 +15,7 @@ class User {
   bool pref_mathematics;
   bool isDone;
 
-  User({
+  UserModel({
     @required this.createdTime,
     @required this.name,
     @required this.email,
@@ -26,7 +26,7 @@ class User {
     this.isDone = false
   });
 
-  static User fromJson(Map<String, dynamic> json) => User(
+  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
         createdTime: Utils.toDateTime(json['createdTime']),
         name: json['name'],
         email: json['email'],

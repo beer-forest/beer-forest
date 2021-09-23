@@ -8,7 +8,7 @@ import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class UserWidget extends StatelessWidget {
-  final User user;
+  final UserModel user;
 
   const UserWidget({
     @required this.user,
@@ -92,14 +92,14 @@ class UserWidget extends StatelessWidget {
         ),
       );
 
-  void deleteUser(BuildContext context, User user) {
+  void deleteUser(BuildContext context, UserModel user) {
     final provider = Provider.of<UsersProvider>(context, listen: false);
     provider.removeUser(user);
 
     Utils.showSnackBar(context, 'Deleted the user');
   }
 
-  void editUser(BuildContext context, User user) =>
+  void editUser(BuildContext context, UserModel user) =>
 
       // TODO(chococigar): For some reason, using the command below results in null.
       // Navigator.of(context).pushNamed(route.EditProfile, arguments: {user: user});

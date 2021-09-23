@@ -1,4 +1,6 @@
+import 'package:firebase_authentication_tutorial/service/locator.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/widget/avatar.dart';
@@ -49,7 +51,19 @@ class ProfileWidget extends StatelessWidget {
                   Avatar(
                     // avatarUrl: _currentUser?.avatarUrl,
                     // avatarUrl: "https://static.wikia.nocookie.net/meme/images/1/16/Yee.png/revision/latest?cb=20190307094426",
-                    onTap: () {},
+                    onTap: () async {
+                      /*
+                      File image = await ImagePicker.pickImage(
+                          source: ImageSource.gallery);
+
+                      await locator
+                          .get<UserController>()
+                          .uploadProfilePicture(image);
+
+                      setState(() {});
+                      */
+
+                    },
                   ),
                   Text(
                       "Hello " + _currentUser.name,
