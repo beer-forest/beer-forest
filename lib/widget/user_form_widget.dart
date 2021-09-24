@@ -5,25 +5,42 @@ class UserFormWidget extends StatefulWidget {
 
   const UserFormWidget({
     Key key,
-    name,
-    email,
-    pref_english,
-    pref_korean_literature,
-    pref_mathematics,
-    inviter,
-    friendsList,
+    this.name,
+    this.email,
+    this.pref_english,
+    this.pref_korean_literature,
+    this.pref_mathematics,
+    this.inviter,
+    this.friendsList,
 
-    @required onChangedName,
-    @required onChangedEmail,
-    @required onChangedPrefEnglish,
-    @required onChangedPrefKoreanLiterature,
-    @required onChangedPrefMathematics,
-    @required onChangedInviter,
-    @required onChangedFriends,
-    @required onSavedUser,
+    @required this.onChangedName,
+    @required this.onChangedEmail,
+    @required this.onChangedPrefEnglish,
+    @required this.onChangedPrefKoreanLiterature,
+    @required this.onChangedPrefMathematics,
+    @required this.onChangedInviter,
+    @required this.onChangedFriends,
+    @required this.onSavedUser,
 
-    nameController
   }) : super(key: key);
+
+  final String name;
+  final String email;
+  final bool pref_english;
+  final bool pref_korean_literature;
+  final bool pref_mathematics;
+  final String inviter;
+  final List<String> friendsList;
+
+  final ValueChanged<String> onChangedName;
+  final ValueChanged<String> onChangedEmail;
+  final ValueChanged<bool> onChangedPrefEnglish;
+  final ValueChanged<bool> onChangedPrefKoreanLiterature;
+  final ValueChanged<bool> onChangedPrefMathematics;
+  final ValueChanged<String> onChangedInviter;
+  final ValueChanged<List<String>> onChangedFriends;
+
+  final VoidCallback onSavedUser;
 
   @override
   _UserFormWidgetState createState() => _UserFormWidgetState();
@@ -32,7 +49,8 @@ class _UserFormWidgetState extends State<UserFormWidget> {
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController;
-  static List<String> friendsList = [null];
+  static List<String> friendsList;
+
 
   @override
   void initState() {
@@ -45,24 +63,6 @@ class _UserFormWidgetState extends State<UserFormWidget> {
     nameController.dispose();
     super.dispose();
   }
-
-  //String name;
-  String name;
-  String email;
-  bool pref_english = false;
-  bool pref_korean_literature = false;
-  bool pref_mathematics = false;
-  String inviter;
-
-  ValueChanged<String> onChangedName;
-  ValueChanged<String> onChangedEmail;
-  ValueChanged<bool> onChangedPrefEnglish;
-  ValueChanged<bool> onChangedPrefKoreanLiterature;
-  ValueChanged<bool> onChangedPrefMathematics;
-  ValueChanged<String> onChangedInviter;
-  ValueChanged<List<String>> onChangedFriends;
-
-  VoidCallback onSavedUser;
 
 
 
@@ -85,8 +85,8 @@ class _UserFormWidgetState extends State<UserFormWidget> {
 
   Widget buildName() => TextFormField(
         maxLines: 1,
-        initialValue: name,
-        onChanged: onChangedName,
+        initialValue: widget.name,
+        onChanged: widget.onChangedName,
         validator: (title) {
           if (title.isEmpty) {
             return 'The name cannot be empty';
@@ -101,8 +101,8 @@ class _UserFormWidgetState extends State<UserFormWidget> {
 
   Widget buildEmail() => TextFormField(
         maxLines: 1,
-        initialValue: email,
-        onChanged: onChangedEmail,
+        initialValue: widget.email,
+        onChanged: widget.onChangedEmail,
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Email',
@@ -111,26 +111,26 @@ class _UserFormWidgetState extends State<UserFormWidget> {
 
   Widget buildPrefEnglish() => CheckboxListTile(
     title: Text("english"),
-    value: pref_english,
-    onChanged: onChangedPrefEnglish
+    value: widget.pref_english,
+    onChanged: widget.onChangedPrefEnglish
   );
   Widget buildPrefKoreanLiterature() => CheckboxListTile(
       title: Text("korean literature"),
-      value: pref_korean_literature,
-      onChanged: onChangedPrefKoreanLiterature
+      value: widget.pref_korean_literature,
+      onChanged: widget.onChangedPrefKoreanLiterature
   );
 
   Widget buildPrefMathematics() => CheckboxListTile(
       title: Text("mathematics"),
-      value: pref_mathematics,
-      onChanged: onChangedPrefMathematics
+      value: widget.pref_mathematics,
+      onChanged: widget.onChangedPrefMathematics
   );
 
 
   Widget buildInviter() => TextFormField(
     maxLines: 1,
-    initialValue: inviter,
-    onChanged: onChangedInviter,
+    initialValue: widget.inviter,
+    onChanged: widget.onChangedInviter,
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
       labelText: 'inviter',
@@ -161,7 +161,7 @@ class _UserFormWidgetState extends State<UserFormWidget> {
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
           ),
-          onPressed: onSavedUser,
+          onPressed: widget.onSavedUser,
           child: Text('Save'),
         ),
       );
@@ -169,7 +169,7 @@ class _UserFormWidgetState extends State<UserFormWidget> {
   /// get firends text-fields
   List<Widget> _getFriends(){
     List<Widget> friendsTextFields = [];
-    for(int i=0; i<friendsList.length; i++){
+    for(int i=0; i<widget.friendsList.length; i++){
       friendsTextFields.add(
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -178,7 +178,7 @@ class _UserFormWidgetState extends State<UserFormWidget> {
                 Expanded(child: FriendTextFields(i)),
                 SizedBox(width: 16,),
                 // we need add button at last friends row
-                _addRemoveButton(i == friendsList.length-1, i),
+                _addRemoveButton(i == widget.friendsList.length-1, i),
               ],
             ),
           )
@@ -193,9 +193,9 @@ class _UserFormWidgetState extends State<UserFormWidget> {
       onTap: (){
         if(add){
           // add new text-fields at the top of all friends textfields
-          friendsList.insert(0, null);
+          widget.friendsList.insert(0, null);
         }
-        else friendsList.removeAt(index);
+        else widget.friendsList.removeAt(index);
         setState((){});
       },
       child: Container(

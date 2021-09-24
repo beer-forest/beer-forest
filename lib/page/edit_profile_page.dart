@@ -64,6 +64,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
               pref_english: pref_english,
               pref_korean_literature: pref_korean_literature,
               pref_mathematics: pref_mathematics,
+              inviter: inviter,
+              friendsList: friendsList,
               onChangedName: (name) => setState(() => this.name = name),
               onChangedEmail: (email) =>
                   setState(() => this.email = email),
