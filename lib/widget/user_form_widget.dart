@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 class UserFormWidget extends StatefulWidget {
 
-  const UserFormWidget({
+  UserFormWidget({
     Key key,
     this.name,
     this.email,
@@ -30,7 +30,8 @@ class UserFormWidget extends StatefulWidget {
   final bool pref_korean_literature;
   final bool pref_mathematics;
   final String inviter;
-  final List<String> friendsList;
+  // final List<String> friendsList;
+  List<String> friendsList = [null];
 
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedEmail;
@@ -41,6 +42,7 @@ class UserFormWidget extends StatefulWidget {
   final ValueChanged<List<String>> onChangedFriends;
 
   final VoidCallback onSavedUser;
+
 
   @override
   _UserFormWidgetState createState() => _UserFormWidgetState();
@@ -77,6 +79,7 @@ class _UserFormWidgetState extends State<UserFormWidget> {
             buildPrefKoreanLiterature(),
             buildPrefMathematics(),
             buildInviter(),
+            buildFriendsList(),
             buildFriends(),
             buildButton(),
           ],
@@ -134,6 +137,16 @@ class _UserFormWidgetState extends State<UserFormWidget> {
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
       labelText: 'inviter',
+    ),
+  );
+
+  Widget buildFriendsList() => TextFormField(
+    maxLines: 1,
+    initialValue: widget.friendsList.join(",  "),
+    onChanged: widget.onChangedInviter,
+    decoration: InputDecoration(
+      border: UnderlineInputBorder(),
+      labelText: 'Total friends',
     ),
   );
 
