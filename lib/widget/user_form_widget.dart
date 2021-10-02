@@ -30,8 +30,7 @@ class UserFormWidget extends StatefulWidget {
   final bool pref_korean_literature;
   final bool pref_mathematics;
   final String inviter;
-  // final List<String> friendsList;
-  List<String> friendsList = [null];
+  final List<String> friendsList;
 
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedEmail;
