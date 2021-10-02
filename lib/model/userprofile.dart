@@ -5,7 +5,7 @@ class UserField {
   static const createdTime = 'createdTime';
 }
 
-class UserModel {
+class UserProfile {
   DateTime createdTime;
   String name;
   String id;
@@ -13,9 +13,10 @@ class UserModel {
   bool pref_english;
   bool pref_korean_literature;
   bool pref_mathematics;
-  bool isDone;
+  String inviter;
+  List<String> friendsList;
 
-  UserModel({
+  UserProfile({
     @required this.createdTime,
     @required this.name,
     @required this.email,
@@ -23,10 +24,11 @@ class UserModel {
     this.pref_english = false,
     this.pref_korean_literature = false,
     this.pref_mathematics = false,
-    this.isDone = false
+    this.inviter,
+    this.friendsList
   });
 
-  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
+  static UserProfile fromJson(Map<String, dynamic> json) => UserProfile(
         createdTime: Utils.toDateTime(json['createdTime']),
         name: json['name'],
         email: json['email'],
@@ -34,8 +36,10 @@ class UserModel {
         pref_english: json['pref_english'],
         pref_korean_literature: json['pref_korean_literature'],
         pref_mathematics: json['pref_mathematics'],
-        isDone: json['isDone']
+        inviter: json['inviter'],
+        friendsList: new List<String>.from(json['friendsList'])
       );
+
 
   Map<String, dynamic> toJson() => {
         'createdTime': Utils.fromDateTimeToJson(createdTime),
@@ -45,6 +49,7 @@ class UserModel {
         'pref_english': pref_english,
         'pref_korean_literature': pref_korean_literature,
         'pref_mathematics': pref_mathematics,
-        'isDone': isDone,
+        'inviter': inviter,
+        'friendsList': friendsList,
       };
 }

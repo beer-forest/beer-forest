@@ -2,12 +2,13 @@ import 'package:firebase_authentication_tutorial/page/matched_user_profile_page.
 import 'package:firebase_authentication_tutorial/route/route.dart' as route;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_authentication_tutorial/model/user.dart';
+import 'package:firebase_authentication_tutorial/model/userprofile.dart';
 import 'package:firebase_authentication_tutorial/provider/users.dart';
 import 'package:firebase_authentication_tutorial/util/utils.dart';
 
 class UserPrefWidget extends StatelessWidget {
-  final UserModel user;
+
+  final UserProfile user;
   final String pref;
 
   const UserPrefWidget({
@@ -76,7 +77,8 @@ class UserPrefWidget extends StatelessWidget {
     );
   }
 
-  void viewUser(BuildContext context, UserModel user) =>
+
+  void viewUser(BuildContext context, UserProfile user) =>
 
   Navigator.of(context).push(
     MaterialPageRoute(
