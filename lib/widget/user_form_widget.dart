@@ -49,8 +49,6 @@ class _UserFormWidgetState extends State<UserFormWidget> {
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController;
-  static List<String> friendsList;
-
 
   @override
   void initState() {
@@ -175,7 +173,8 @@ class _UserFormWidgetState extends State<UserFormWidget> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Row(
               children: [
-                Expanded(child: FriendTextFields(i)),
+                Expanded(child: FriendTextFields(i,
+                    widget.friendsList)),
                 SizedBox(width: 16,),
                 // we need add button at last friends row
                 _addRemoveButton(i == widget.friendsList.length-1, i),
@@ -215,7 +214,12 @@ class _UserFormWidgetState extends State<UserFormWidget> {
 
 class FriendTextFields extends StatefulWidget {
   final int index;
-  FriendTextFields(this.index);
+  final List<String> friendsList;
+
+  FriendTextFields(
+      this.index,
+      this.friendsList
+      );
   @override
   _FriendTextFieldsState createState() => _FriendTextFieldsState();
 }
@@ -239,12 +243,15 @@ class _FriendTextFieldsState extends State<FriendTextFields> {
   Widget build(BuildContext context) {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _nameController.text = _UserFormWidgetState.friendsList[widget.index] ?? '';
+      _nameController.text = widget.friendsList[widget.index] ?? '';
+
     });
 
     return TextFormField(
       controller: _nameController,
-      onChanged: (v) => _UserFormWidgetState.friendsList[widget.index] = v,
+      onChanged: (v) => {
+        widget.friendsList[widget.index] = v
+        },
       decoration: InputDecoration(
           hintText: 'Enter your friend\'s name'
       ),
