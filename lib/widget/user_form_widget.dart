@@ -188,15 +188,27 @@ class _UserFormWidgetState extends State<UserFormWidget> {
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Row(
               children: [
-                Expanded(child: FriendTextFields(i)),
+                Expanded(child: Text(widget.friendsList[i])),
                 SizedBox(width: 16,),
                 // we need add button at last friends row
-                _addRemoveButton(i == widget.friendsList.length-1, i),
+                _addRemoveButton(false, i),
               ],
             ),
           )
       );
     }
+    friendsTextFields.add(
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Row(
+            children: [
+              Expanded(child: FriendTextFields(widget.friendsList.length)),
+              SizedBox(width: 16,),
+              _addRemoveButton(true, widget.friendsList.length),
+            ],
+          ),
+        )
+    );
     return friendsTextFields;
   }
 
@@ -206,7 +218,7 @@ class _UserFormWidgetState extends State<UserFormWidget> {
       onTap: (){
         if(add){
           // add new text-fields at the top of all friends textfields
-          widget.friendsList.insert(0, null);
+          widget.friendsList.insert(index, "asdf");
         }
         else widget.friendsList.removeAt(index);
         setState((){});
