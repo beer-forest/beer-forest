@@ -43,20 +43,6 @@ class UsersProvider extends ChangeNotifier {
         notifyListeners();
       });
 
-  void addUser(UserModel user) => FirebaseApi.createUser(user);
-
-  void removeUser(UserModel user) => FirebaseApi.deleteUser(user);
-
-  bool toggleUserStatus(UserModel user) {
-    user.isDone = !user.isDone;
-    FirebaseApi.updateUser(user);
-
-    return user.isDone;
-  }
-
-  void updateUser(UserModel user, String name, String email,
-      bool pref_english, bool pref_korean_literature, bool pref_mathematics) {
-
   void addUser(UserProfile user) => FirebaseApi.createUser(user);
 
   void removeUser(UserProfile user) => FirebaseApi.deleteUser(user);
